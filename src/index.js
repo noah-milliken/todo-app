@@ -1,28 +1,61 @@
-import { form } from "./view"
+import { form, todos } from "./view"
 import { todoModel } from "./model"
-
+let todo = null
 function component() {
+    function handleChange() {
+        renderTodos()
+    }
+    document.addEventListener('click', (event) => {
+        if (event.target.id === "submit-todo") {
+            console.log('banana')
+            addTodoItem(event)
+        }
+    })
 
-    let model = todoModel()
-    model.deleteTodo(10)
-    console.log(model.sortBy(model.todos, 'category'))
 
-    const element = document.createElement('div')
-    element.appendChild(form())
-    document.addEventListener('submit', (e) => {
-        e.preventDefault()
+    // set up the state that should be persisitant in component
+    todo = todoModel(handleChange)
+
+
+    function rendercurrentView(todo) {
+        // call the renderCurrentView and pass it the current persistant state and return view for future interactions
+        const element = document.createElement('div')
+        element.setAttribute('id', 'todos')
+        element.appendChild(form())
+
+        // make the rendered view respond to events and call an update if the persistant state for the component changes.
+
+        return element
+    }
+    const addTodoItem = ((event) => {
+        event.preventDefault()
         const category = document.getElementById('categoryInput').value
         const title = document.getElementById('titleInput').value
         const description = document.getElementById('descriptionInput').value
         const dueDate = document.getElementById('dueDateInput').value
         const priorityInput = document.getElementById('priorityInput').value
         const completed = document.getElementById('completedInput').value
-
-        model.addTodo(category, title, description, dueDate, priorityInput, completed)
-        console.log(model.sortBy(model.todos, 'category'))
+        todo.addTodo(category, title, description, dueDate, priorityInput, completed)
+        console.log(todo.sortBy(todo.todos, 'category'))
     })
-    return element
+
+    function renderTodos(todo) {
+        const element = document.getElementById('todos')
+        const todoDiv = document.createElement('div')
+        todoDiv.innerHTML = todos(todo)
+        element.appendChild(todoDiv)
+    }
+
+    document.body.appendChild(rendercurrentView(todo))
+    renderTodos(todo)
+    // return element
 }
 
-document.body.appendChild(component())
+component()
 
+
+
+
+// - we need something that takes form inputes
+// - we need something that knows when we update state and re-renderes our todos
+// - we want somthing responsable for the html of what the todo's look like

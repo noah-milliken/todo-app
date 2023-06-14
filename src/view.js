@@ -13,7 +13,8 @@ const form = () => {
   <input type="text" id="descriptionInput" name="description" value="Practice factory functions" required>
   
   <label for="dueDate">Due Date:</label>
-  <input type="date" id="dueDateInput" name="dueDate"  value="04-07-2023" required>
+  <input type="date" id="dueDateInput" name="dueDate"  value="04-07-2023" >
+ 
   
   <label for="priority">Priority:</label>
   <select id="priorityInput" name="priority" required>
@@ -24,11 +25,33 @@ const form = () => {
   
   <label for="completed">Completed:</label>
   <input type="checkbox" id="completedInput" name="completed">
-  
-  <button type="submit">Add Todo</button>
+  <button id="submit-todo">Submit Todo</button>
 </form>
+<div id='todos'></div>
     `
   return formElement
 }
+const todos = (todo) => {
+  let todoDiv = ``
+  const todoArr = todo.todos
+  todoArr.forEach((todo, index) => {
+    todoDiv += `<div class="card">
+      <h1>${todo.title}</h1>
+      <h2>${todo.description}</h2>
+      <h2>${todo.dueDate}</h2>
+      <h3>${todo.priority}</h3>
+      <h4>${todo.completed}</h4>
+      <button data-index="${index}" id="${index}">Button for ${index}</button>
+    </div>`
+  })
+  return todoDiv
+}
 
-export { form }
+// const todos = (todos) => {
+//   console.log(todos)
+//   const list = todos.todos.map((todo) => {
+//     return `<li >${todo.title}</li>`
+//   })
+//   return `<ul>${list}</ul>`
+// }
+export { form, todos }

@@ -4,7 +4,7 @@ const todoFactory = (category, title, description, dueDate, priority, completed 
     return { category, title, description, dueDate, priority, completed }
 }
 
-const todoModel = () => {
+const todoModel = (callback) => {
     let todos = [{
         category: 'Work',
         title: 'Task 1',
@@ -48,17 +48,31 @@ const todoModel = () => {
     const addTodo = (category, title, description, dueDate, priority, completed) => {
         const newTodo = todoFactory(category, title, description, dueDate, priority, completed)
         todos.push(newTodo)
+        interacted()
     }
     const deleteTodo = (i) => {
+        interacted()
         return todos.splice(i, 1)
     }
     const sortBy = (array, key) => {
+        interacted()
         return array.reduce((result, currentValue) => {
             const groupKey = currentValue[key]
             result[groupKey] = result[groupKey] || []
             result[groupKey].push({ ...currentValue })
             return result
         }, {})
+    }
+
+    const interacted = () => {
+        console.log("interacted")
+        if (callback) {
+            callback()
+        }
+    }
+
+    const alert = (message) => {
+        alert(message)
     }
 
     return {
