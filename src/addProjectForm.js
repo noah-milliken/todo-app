@@ -1,4 +1,4 @@
-import { Project, projects } from "./project"
+import { todoModel, todos } from "./project"
 const addProjectForm = () => {
   const addProjectFormContainer = document.createElement('div')
   addProjectFormContainer.id = 'add-project-form-container'
@@ -25,13 +25,6 @@ const addProjectForm = () => {
 
 
   projectNameSubmitButton.addEventListener('click', (e) => {
-    e.preventDefault()
-
-    const projectName = projectNameInput.value
-
-    const newProject = new Project(projectName)
-    projects.push(newProject)
-
 
   })
 

@@ -85,8 +85,9 @@ const todoModel = (callback) => {
 
 }
 
+
 export {
-    todoModel
+    todoModel, todos
 }
 
 

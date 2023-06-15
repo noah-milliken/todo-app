@@ -1,15 +1,20 @@
+import './style.css'
 import { addProjectForm } from "./addProjectForm"
 import { addTodoForm } from "./addTodoForm"
-import { render } from './render'
-import { projects } from "./project"
+import { todos } from "./project"
+import { renderSidebar, renderMain } from './render'
 
 const Component = () => {
     const element = document.createElement('div')
+    element.classList = 'app-container'
     element.appendChild(addProjectForm())
     element.appendChild(addTodoForm())
-    element.appendChild(render(projects))
+    element.appendChild(renderSidebar(todos))
+    element.appendChild(renderMain(todos))
     return element
 }
+
+
 
 document.body.appendChild(Component())
 

@@ -1,4 +1,4 @@
-import { projects, Project } from "./project";
+import { todos, todoModel } from "./project";
 
 const addTodoForm = () => {
     const addTodoFormContainer = document.createElement('div')
@@ -57,11 +57,12 @@ const addTodoForm = () => {
     addTodoFormContainer.appendChild(completedInput);
     addTodoFormContainer.appendChild(addTaskFormButton)
 
-    addTaskFormButton.addEventListener('click', (e) => {
-        e.preventDefault()
-        console.log('hello')
+    // addTaskFormButton.addEventListener('click', (e) => {
 
-    })
+
+
+
+    // })
 
     return addTodoFormContainer
 }
