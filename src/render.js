@@ -5,6 +5,7 @@ const renderSidebar = (array) => {
     const sidebarElement = document.createElement('div')
     sidebarElement.classList = 'side-bar'
     sidebarElement.innerHTML = ''
+
     const catagories = Object.keys(sortBy(array, 'category'))
 
     for (let i = 0; i < catagories.length; i++) {
@@ -13,6 +14,15 @@ const renderSidebar = (array) => {
         <button id="${catagories[i]}" >+</button>
         </div>`
     }
+
+    const addProjectButton = document.createElement('button')
+    addProjectButton.id = 'add-project-btn'
+    addProjectButton.textContent = "+"
+    sidebarElement.appendChild(addProjectButton)
+    addProjectButton.addEventListener('click', (e) => {
+        addProjectButton.classList.toggle('hidden')
+        document.getElementById('add-project-form-container').classList.toggle('hidden')
+    })
 
     return sidebarElement
 }
@@ -35,7 +45,11 @@ const renderMain = (array) => {
         </div>`
     }
 
+
+
     return mainElement
+
+
 }
 
 
