@@ -4,6 +4,7 @@ const renderSidebar = (array) => {
     console.log(sortBy(array, 'priority'))
     const sidebarElement = document.createElement('div')
     sidebarElement.classList = 'side-bar'
+    sidebarElement.id = 'sidebar-container'
     sidebarElement.innerHTML = ''
 
     const catagories = Object.keys(sortBy(array, 'category'))
@@ -16,10 +17,11 @@ const renderSidebar = (array) => {
     }
 
     const addProjectButton = document.createElement('button')
-    addProjectButton.id = 'add-project-btn'
+    addProjectButton.id = 'add-project-b'
     addProjectButton.textContent = "+"
     sidebarElement.appendChild(addProjectButton)
     addProjectButton.addEventListener('click', (e) => {
+        e.preventDefault()
         addProjectButton.classList.toggle('hidden')
         document.getElementById('add-project-form-container').classList.toggle('hidden')
     })

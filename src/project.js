@@ -1,3 +1,4 @@
+import { renderMain } from "./render"
 
 
 const todoFactory = (category, title, description, dueDate, priority, completed = false) => {
@@ -48,10 +49,11 @@ let todos = [{
 const addTodo = (category, title, description, dueDate, priority, completed) => {
     const newTodo = todoFactory(category, title, description, dueDate, priority, completed)
     todos.push(newTodo)
+    console.log('added todo')
     // interacted()
 }
 const deleteTodo = (i) => {
-    // interacted()
+
     return todos.splice(i, 1)
 }
 const sortBy = (array, key) => {
@@ -72,9 +74,9 @@ const interacted = () => {
     }
 }
 
+addTodo('Hello', "myname", 'is', 'nes', 'hre', 'jiberish')
 
-
-export { todos, sortBy }
+export { todos, sortBy, addTodo }
 
 
 

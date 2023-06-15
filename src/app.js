@@ -5,6 +5,7 @@ import { todos } from "./project"
 import { renderSidebar, renderMain } from './render'
 
 const Component = () => {
+
     const element = document.createElement('div')
     element.classList = 'app-container'
     element.appendChild(addProjectForm())
@@ -13,6 +14,8 @@ const Component = () => {
     element.appendChild(renderMain(todos))
     return element
 }
+renderMain(todos)
+export { Component }
 
 
 

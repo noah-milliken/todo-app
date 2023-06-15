@@ -1,4 +1,5 @@
-import { todoModel, todos } from "./project"
+import { addTodo, todoModel, todos } from "./project"
+
 const addProjectForm = () => {
   const addProjectFormContainer = document.createElement('div')
   addProjectFormContainer.classList.add('hidden')
@@ -26,9 +27,12 @@ const addProjectForm = () => {
 
 
   projectNameSubmitButton.addEventListener('click', (e) => {
-    console.log('banans')
+    e.preventDefault()
+    addTodo('Any')
     addProjectFormContainer.classList.toggle('hidden')
-    document.getElementById('add-project-button').classList.toggle('hidden')
+    //document.getElementById('add-project-button').classList.toggle('hidden')
+    console.log(todos)
+
   })
 
 
